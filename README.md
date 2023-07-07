@@ -22,15 +22,18 @@
 - Javascript
 - ExpressJS
 - NodeJS
-- PostgresSql
+- PostgreSql
 - React
 
 ---
 
-### **_Screenshots_**
+### **_Component Hierarchy Diagram_**
 
-![Image] (images/chd.png)
-![Image] (images/erd.png)
+![Image](images/chd.png)
+
+### **_Entity Relationship Diagram_**
+
+![Image](images/erd.png)
 
 ---
 
