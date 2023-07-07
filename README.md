@@ -6,7 +6,7 @@
 
 [LinkedIN](https://www.linkedin.com/in/jeremy-cox-/)
 [GitHub](https://www.github.com/remifreyo/Omni)
-[Trello](https://trello.com/)
+[Trello](https://trello.com/b/BdJqM89e/blog)
 [Figma](https://www.figma.com/)
 
 ---
@@ -29,7 +29,8 @@
 
 ### **_Screenshots_**
 
-![Image] ()
+![Image] (images/chd.png)
+![Image] (images/erd.png)
 
 ---
 
