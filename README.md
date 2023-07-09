@@ -22,18 +22,21 @@
 - Javascript
 - ExpressJS
 - NodeJS
-- PostgreSql
+- MongoDB
+- Mongoose
 - React
+- Redux
+- Material UI
 
 ---
 
 ### **_Component Hierarchy Diagram_**
 
-![Image](images/chd.png)
+![Image](client/public/images/chd.png)
 
 ### **_Entity Relationship Diagram_**
 
-![Image](images/erd.png)
+![Image](client/public/images/erd.png)
 
 ---
 
