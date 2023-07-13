@@ -1,3 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
 body {
   margin: 0;
+  font-family: 'Roboto', sans-serif;
 }
+
+header {
+  position: fixed;
+  width:98%;
+  z-index: 999;
+}
+
+.App .home, .categories, .new {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  padding-top: 12%;
+  align-items: center;
+  background-image: url(images/bckgrnd.jpeg);
+  background-color: rgb(214, 231, 255,);
+  background-repeat:no-repeat;
+  background-size:cover;
+  
+}
+
+
+.carousel {
+  overflow:hidden;
+  width:80%;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.carousel_item {
+  display: inline-flex;
+  flex-direction: column;
+  background-repeat:no-repeat;
+  background-size:cover;
+  height: 490px;
+  width: 100%;
+  position: relative;
+  background-color: rgb(0, 0, 0, .4);
+  background-blend-mode:overlay;
+}
+
+.inner {
+  white-space: nowrap;
+  transition: transform 0.3s;
+  height:auto;
+  width: auto;
+  position: relative;
+box-shadow: 0 2px black ;
+}
+
+
+.carousel_item p {
+  color:white;
+  margin-left: 7%;
+  position: relative;
+  width: 40%;
+  height: 20%;
+  text-align: center;
+  white-space: normal;
+  text-overflow: ellipsis;
+}
+.carousel_item h3 {
+  color:white;
+  margin-bottom: 0;
+  margin-left: 7%;
+  font-size: 3rem;
+  position: relative;
+  width: 40%;
+  text-align: center;
+  white-space: normal;
+  padding-top: 6%;
+
+}
+.carousel_item a {
+  width: 40%;
+  margin-left: 7%;
+  margin-top: 2%;
+  display: flex;
+  justify-content: center;
+ }
+
+.carousel_item button {
+width: 30%;
+
+
+}
+
+.carousel_btns {
+  display: flex;
+  justify-content: space-between;
+height: 50px;
+background-color: #e3eaf3;
+border: solid 1px black;
+}
+
+.carousel_btns button {
+  border: none;
+  cursor: pointer;
+  background: none;
+}
+
+.indicator {
+  color: black;
+}
+
+.indicator_active {
+  color: #923080;
+}
+
+.nav {
+  justify-content: space-between;
+  align-items: center;
+  color: #484F4E;
+  padding: 1em;
+  height: 50px;
+  font-family: 'Roboto';
+  display: flex;
+  width: 100%;
+  background-color: #380529;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #a2a8bd;
+  font-weight: bold;
+  margin-left: 0.5em;
+  padding: 14px;
+}
+
+.nav a:hover {
+  font-size: 1.1em;
+}
+
+.search {
+  width: 100%;
+  margin-top: 8%;
+  position: absolute;
+}
+
+.search input {
+  height: 28px;
+  width: 55%;
+margin-left: 22.5%;
+text-align: center;
+border: solid 3px rgb(0, 0, 0);
+}
+
+
+.form {
+  margin-top: 5%;;
+width: 60%;
+display: flex;
+align-content: center;
+justify-content: center;
+background-color: #484F4E;
+opacity: 85%;
+padding: 3%;
+}
+
+.form form label, input{
+  width: 100%;
+  font-size: 1.2em;
+  color: white;
+  margin-bottom: 15px;
+}
+
