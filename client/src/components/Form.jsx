@@ -1,12 +1,33 @@
+import { useState } from 'react'
+import FileBase from 'react-file-base64'
+import { useDispatch } from 'react-redux'
+import { createArticle } from '../actions/articles'
+
 const Form = () => {
-  const handleSubmit = () => {}
-  const handleChange = () => {}
+  const [articleData, setarticleData] = useState({
+    title: '',
+    description: '',
+    image: ''
+  })
+  const dispatch = useDispatch()
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    dispatch(createArticle(articleData))
+  }
+  const handleChange = (e) => {
+    setarticleData({ ...articleData, [e.target.id]: e.target.value })
+  }
   return (
     <div className="form">
       <form onSubmit={handleSubmit}>
         <label htmlFor="title">Title:</label>
         <br />
-        <input id="title" type="text" onChange={handleChange} />
+        <input
+          id="title"
+          type="text"
+          value={articleData.title}
+          onChange={handleChange}
+        />
         <br />
         <label htmlFor="description">Description:</label>
         <br />
@@ -15,11 +36,19 @@ const Form = () => {
           cols="50"
           rows="10"
           onChange={handleChange}
+          value={articleData.description}
         ></textarea>
         <br />
         <label htmlFor="image">Image:</label>
         <br />
-        <input id="image" type="text" onChange={handleChange} />
+        <FileBase
+          id="image"
+          multiple={false}
+          type="file"
+          onDone={({ base64 }) =>
+            setarticleData({ ...articleData, image: base64 })
+          }
+        />
         <button type="submit">Submit!</button>
       </form>
     </div>
