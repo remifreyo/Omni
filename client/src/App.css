@@ -61,7 +61,8 @@ box-shadow: 0 2px black ;
   margin-left: 7%;
   position: relative;
   width: 40%;
-  height: 20%;
+  height: 70px;
+  overflow: hidden;
   text-align: center;
   white-space: normal;
   text-overflow: ellipsis;
@@ -165,14 +166,32 @@ opacity: 85%;
 padding: 3%;
 }
 
-.form form label, input{
+.form form label, input, p{
   width: 100%;
   font-size: 1.2em;
   color: rgb(0, 0, 0);
   margin-bottom: 15px;
 }
 
-.form form label {
+.form form label, p{
   color: white;
 }
 
+.article-card img{
+height: 150px;
+}
+
+.article-card {
+  margin-top: 20px;
+  display: flex;
+  background-color: rgba(20, 0, 35, 0.7);
+  width: 80%;
+  justify-content: space-around;
+  align-content: space-between;
+}
+
+.idv-card {
+  background-color: aliceblue;
+  padding: 5px;
+  margin: 10px;
+}

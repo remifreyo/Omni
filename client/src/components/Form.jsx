@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import FileBase from 'react-file-base64'
 import { useDispatch } from 'react-redux'
 import { createArticle } from '../actions/articles'
@@ -17,6 +17,7 @@ const Form = () => {
   const handleChange = (e) => {
     setarticleData({ ...articleData, [e.target.id]: e.target.value })
   }
+  useEffect(() => {}, [articleData])
   return (
     <div className="form">
       <form onSubmit={handleSubmit}>
@@ -39,10 +40,8 @@ const Form = () => {
           value={articleData.description}
         ></textarea>
         <br />
-        <label htmlFor="image">Image:</label>
-        <br />
+        <p>Image:</p>
         <FileBase
-          id="image"
           multiple={false}
           type="file"
           onDone={({ base64 }) =>
