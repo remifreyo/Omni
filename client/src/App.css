@@ -12,7 +12,7 @@ header {
   z-index: 999;
 }
 
-.App .home, .categories, .new {
+.App .home, .categories, .new, .article-details {
   display: flex;
   height: 100vh;
   flex-direction: column;
@@ -85,12 +85,16 @@ box-shadow: 0 2px black ;
   margin-top: 2%;
   display: flex;
   justify-content: center;
+  text-decoration: none;
  }
 
 .carousel_item button {
-width: 30%;
+width: 40%;
+max-width: 120px;
+}
 
-
+.carousel_item button:hover {
+  cursor: pointer;
 }
 
 .carousel_btns {
@@ -184,7 +188,7 @@ height: 150px;
 .article-card {
   margin-top: 20px;
   display: flex;
-  background-color: rgba(20, 0, 35, 0.7);
+  background-color: rgba(159, 146, 161, 0.2);
   width: 80%;
   justify-content: space-around;
   align-content: space-between;
@@ -194,4 +198,21 @@ height: 150px;
   background-color: aliceblue;
   padding: 5px;
   margin: 10px;
+}
+
+.article-card a{
+text-decoration: none;
+color: black;
+}
+
+.article-details section {
+  background-color: rgba(255, 255, 255, 0.7);
+  width: 100%;
+  text-align: center;
+  margin-top: 5%;
+  height: 80%;
+}
+
+.article-details p {
+  color: black;
 }

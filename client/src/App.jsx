@@ -8,6 +8,7 @@ import Categories from './pages/Categories'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import NewArticle from './pages/NewArticle'
+import Article from './pages/Article'
 
 const App = () => {
   const location = useLocation()
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/new" element={<NewArticle />} />
+          <Route path="/:id" element={<Article />} />
         </Routes>
       </main>
     </div>

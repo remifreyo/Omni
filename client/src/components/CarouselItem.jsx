@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const CarouselItem = ({ item }) => {
   return (
     <div
@@ -9,9 +11,9 @@ const CarouselItem = ({ item }) => {
         {item.description.substring(0, 125)}
         {item.description.length > 125 ? '...' : null}
       </p>
-      <a>
-        <button>Read</button>
-      </a>
+      <Link to={`${item._id}`}>
+        <button>Read More</button>
+      </Link>
     </div>
   )
 }
