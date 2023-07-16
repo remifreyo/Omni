@@ -12,9 +12,9 @@ header {
   z-index: 999;
 }
 
-.App .home, .categories, .new, .article-details {
+.App .home, .categories, .new, .article-details, .edit {
   display: flex;
-  height: 100vh;
+  height: 100%;
   flex-direction: column;
   padding-top: 12%;
   align-items: center;
@@ -33,6 +33,7 @@ header {
   flex-direction: column;
   justify-content: center;
   padding-top: 8px;
+  position:absolute;
 }
 .carousel_item {
   display: inline-flex;
@@ -181,23 +182,30 @@ padding: 3%;
   color: white;
 }
 
+.form h1 {
+  color: white;
+  margin-right: 30px;
+}
+
 .article-card img{
 height: 150px;
 }
 
 .article-card {
-  margin-top: 20px;
+  position:relative;
+  margin-top: 40%;
   display: flex;
   background-color: rgba(159, 146, 161, 0.2);
   width: 80%;
-  justify-content: space-around;
-  align-content: space-between;
+  justify-content:space-evenly;
+  flex-wrap: wrap;
 }
 
 .idv-card {
   background-color: aliceblue;
   padding: 5px;
-  margin: 10px;
+  margin: 12px;
+  text-align: center;
 }
 
 .article-card a{
@@ -207,12 +215,26 @@ color: black;
 
 .article-details section {
   background-color: rgba(255, 255, 255, 0.7);
-  width: 100%;
+  width: 95%;
   text-align: center;
-  margin-top: 5%;
+  margin-top: 2%;
   height: 80%;
 }
 
 .article-details p {
   color: black;
+}
+
+.article-details-btns {
+  margin: 5px;
+}
+
+.article-details button {
+  margin: 5px;
+  cursor: pointer;
+}
+
+.idv-card h3 {
+  margin: 5px;
+  font-weight:bold;
 }

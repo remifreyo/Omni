@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
 const Article = () => {
@@ -15,11 +15,22 @@ const Article = () => {
   return article ? (
     <div className="article-details">
       <section>
-        <h1>{article.title}</h1>
-        <p>{article.createdAt}</p>
+        <h1>{article.title.toUpperCase()}</h1>
+        <p>
+          {new Date(article.createdAt).toLocaleString('en-us', {
+            dateStyle: 'medium',
+            timeStyle: 'short'
+          })}
+        </p>
         <p>Likes: {article.likeCount}</p>
         <p>{article.description}</p>
       </section>
+      <div className="article-details-btns">
+        <Link to={`/${id}/edit`} replace>
+          <button>Edit</button>
+        </Link>
+        <button onClick={() => {}}>Delete</button>
+      </div>
     </div>
   ) : null
 }

@@ -1,3 +1,4 @@
+const { default: mongoose } = require('mongoose')
 const Article = require('../models/article')
 
 const getArticles = async (req, res) => {
@@ -20,7 +21,20 @@ const createArticle = async (req, res) => {
   }
 }
 
+const editArticle = async (req, res) => {
+  const { id: _id } = req.params
+  const article = req.body
+  if (!mongoose.Types.ObjectId.isValid(_id))
+    return res.status(404).send('No post with that id')
+
+  const updatedArticle = await Article.findByIdAndUpdate(_id, article, {
+    new: true
+  })
+  res.json(updatedArticle)
+}
+
 module.exports = {
   createArticle,
-  getArticles
+  getArticles,
+  editArticle
 }

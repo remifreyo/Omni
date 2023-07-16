@@ -6,4 +6,6 @@ router.get('/', articlesCtrl.getArticles)
 
 router.post('/', articlesCtrl.createArticle)
 
+router.put('/:id', articlesCtrl.editArticle)
+
 module.exports = router

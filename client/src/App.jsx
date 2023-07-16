@@ -8,11 +8,13 @@ import Categories from './pages/Categories'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import NewArticle from './pages/NewArticle'
+import EditArticle from './pages/EditArticle'
 import Article from './pages/Article'
 
 const App = () => {
   const location = useLocation()
   const dispatch = useDispatch()
+  const id = location.pathname.slice(1, 25)
   useEffect(() => {
     dispatch(getArticles())
   }, [dispatch])
@@ -23,6 +25,7 @@ const App = () => {
       </header>
       <main>
         {location.pathname != '/new' ? <Search /> : null}
+        {location.pathname === `/${id}/edit` ? <EditArticle /> : null}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/categories" element={<Categories />} />
