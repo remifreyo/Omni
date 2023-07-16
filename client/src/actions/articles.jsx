@@ -5,7 +5,7 @@ export const getArticles = () => async (dispatch) => {
     const { data } = await api.fetchArticles()
     dispatch({ type: 'FETCH_ALL', payload: data })
   } catch (error) {
-    console.log(error.message)
+    console.log(error)
   }
 }
 
@@ -24,6 +24,16 @@ export const updateArticle = (id, article) => async (dispatch) => {
 
     dispatch({ type: 'UPDATE', payload: data })
   } catch (error) {
-    console.log(error.messages)
+    console.log(error)
+  }
+}
+
+export const deleteArticle = (id) => async (dispatch) => {
+  try {
+    await api.deleteArticle(id)
+
+    dispatch({ type: 'DELETE', payload: data })
+  } catch (error) {
+    console.log(error)
   }
 }

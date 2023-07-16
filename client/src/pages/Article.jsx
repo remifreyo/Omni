@@ -1,8 +1,12 @@
 import { useSelector } from 'react-redux'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { deleteArticle } from '../actions/articles'
 
 const Article = () => {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
   const [article, setArticle] = useState(null)
   const items = useSelector((state) => state.articles)
   let { id } = useParams()
@@ -29,7 +33,14 @@ const Article = () => {
         <Link to={`/${id}/edit`} replace>
           <button>Edit</button>
         </Link>
-        <button onClick={() => {}}>Delete</button>
+        <button
+          onClick={() => {
+            dispatch(deleteArticle(article._id))
+            navigate('/')
+          }}
+        >
+          Delete
+        </button>
       </div>
     </div>
   ) : null

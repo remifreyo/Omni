@@ -8,3 +8,5 @@ export const createArticle = (newArticle) => axios.post(url, newArticle)
 
 export const updateArticle = (id, updatedArticle) =>
   axios.put(`${url}/${id}`, updatedArticle)
+
+export const deleteArticle = (id) => axios.delete(`${url}/${id}`)

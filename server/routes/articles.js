@@ -8,4 +8,6 @@ router.post('/', articlesCtrl.createArticle)
 
 router.put('/:id', articlesCtrl.editArticle)
 
+router.delete('/:id', articlesCtrl.deleteArticle)
+
 module.exports = router

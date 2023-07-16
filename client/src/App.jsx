@@ -14,10 +14,11 @@ import Article from './pages/Article'
 const App = () => {
   const location = useLocation()
   const dispatch = useDispatch()
+  const currLocation = location.pathname
   const id = location.pathname.slice(1, 25)
   useEffect(() => {
     dispatch(getArticles())
-  }, [dispatch])
+  }, [dispatch, currLocation])
   return (
     <div className="App">
       <header>

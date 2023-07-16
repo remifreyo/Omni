@@ -4,6 +4,8 @@ export default (articles = [], action) => {
       return articles.map((article) =>
         article._id === action.payload._id ? action.payload : article
       )
+    case 'DELETE':
+      return articles.filter((article) => article._id != action.payload)
     case 'FETCH_ALL':
       return action.payload
     case 'CREATE':

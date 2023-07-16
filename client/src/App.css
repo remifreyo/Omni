@@ -14,7 +14,8 @@ header {
 
 .App .home, .categories, .new, .article-details, .edit {
   display: flex;
-  height: 100%;
+  height: 100vh;
+  min-height: 100%;
   flex-direction: column;
   padding-top: 12%;
   align-items: center;
