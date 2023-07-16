@@ -26,7 +26,6 @@ const Article = () => {
             timeStyle: 'short'
           })}
         </p>
-        <p>Likes: {article.likeCount}</p>
         <p>{article.description}</p>
       </section>
       <div className="article-details-btns">
