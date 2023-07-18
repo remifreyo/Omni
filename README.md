@@ -18,7 +18,7 @@
 ### **_Technologies_**
 
 - HTML
-- CSS
+- Vanilla CSS
 - Javascript
 - ExpressJS
 - NodeJS
@@ -26,7 +26,8 @@
 - Mongoose
 - React
 - Redux
-- Material UI
+- JWT
+- Axios
 
 ---
 
