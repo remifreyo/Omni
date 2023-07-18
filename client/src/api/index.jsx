@@ -13,3 +13,5 @@ export const deleteArticle = (id) => API.delete(`${'/articles'}/${id}`)
 
 export const signIn = (formData) => API.post('users/signin', formData)
 export const signUp = (formData) => API.post('users/signup', formData)
+export const comment = (value, id) =>
+  API.post(`/articles/${id}/commentArticle`, { value })

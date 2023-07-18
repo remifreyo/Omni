@@ -46,9 +46,23 @@ const deleteArticle = async (req, res) => {
   res.json({ message: 'Post deleted successfully' })
 }
 
+const commentArticle = async (req, res) => {
+  const { id } = req.params
+  const { value } = req.body
+  const article = await Article.findById(id)
+  article.comments.push({
+    comment: value
+  })
+  const updatedArticle = await Article.findByIdAndUpdate(id, article, {
+    new: true
+  })
+  res.json(updatedArticle)
+}
+
 module.exports = {
   createArticle,
   getArticles,
   editArticle,
-  deleteArticle
+  deleteArticle,
+  commentArticle
 }

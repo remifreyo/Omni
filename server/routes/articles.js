@@ -11,4 +11,6 @@ router.put('/:id', articlesCtrl.editArticle)
 
 router.delete('/:id', articlesCtrl.deleteArticle)
 
+router.post('/:id/commentArticle', articlesCtrl.commentArticle)
+
 module.exports = router
