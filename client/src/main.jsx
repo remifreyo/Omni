@@ -5,10 +5,12 @@ import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { configureStore } from '@reduxjs/toolkit'
 import articlesReducer from './reducers/articles.jsx'
+import authReducer from './reducers/auth.jsx'
 
 const store = configureStore({
   reducer: {
-    articles: articlesReducer
+    articles: articlesReducer,
+    auth: authReducer
   }
 })
 

@@ -4,8 +4,12 @@ import Carousel from '../components/Carousel'
 const Home = () => {
   return (
     <div className="home">
-      <Carousel />
-      <ArticleCard />
+      <div className="carousel-container">
+        <Carousel />
+      </div>
+      <div className="articleCard-container">
+        <ArticleCard />
+      </div>
     </div>
   )
 }

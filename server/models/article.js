@@ -7,10 +7,6 @@ const articleSchema = new Schema(
     description: String,
     author: String,
     image: String,
-    likeCount: {
-      type: Number,
-      default: 0
-    },
     createdAt: {
       type: Date,
       default: new Date()

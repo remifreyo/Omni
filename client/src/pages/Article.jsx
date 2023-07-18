@@ -26,6 +26,7 @@ const Article = () => {
             timeStyle: 'short'
           })}
         </p>
+        <p>Written By: {article.author}</p>
         <p>{article.description}</p>
       </section>
       <div className="article-details-btns">

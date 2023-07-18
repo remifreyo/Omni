@@ -1,12 +1,15 @@
 import axios from 'axios'
 
-const url = 'http://localhost:3000/articles'
+const API = axios.create({ baseURL: 'http://localhost:3000' })
 
-export const fetchArticles = () => axios.get(url)
+export const fetchArticles = () => API.get('/articles')
 
-export const createArticle = (newArticle) => axios.post(url, newArticle)
+export const createArticle = (newArticle) => API.post('/articles', newArticle)
 
 export const updateArticle = (id, updatedArticle) =>
-  axios.put(`${url}/${id}`, updatedArticle)
+  API.put(`${'/articles'}/${id}`, updatedArticle)
 
-export const deleteArticle = (id) => axios.delete(`${url}/${id}`)
+export const deleteArticle = (id) => API.delete(`${'/articles'}/${id}`)
+
+export const signIn = (formData) => API.post('users/signin', formData)
+export const signUp = (formData) => API.post('users/signup', formData)

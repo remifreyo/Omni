@@ -6,6 +6,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 
 const Form = () => {
   const navigate = useNavigate()
+  const user = JSON.parse(localStorage.getItem('profile'))
   const [articleData, setarticleData] = useState({
     title: '',
     description: '',
@@ -17,10 +18,15 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (location.pathname === '/new') {
-      dispatch(createArticle(articleData))
+      dispatch(createArticle({ ...articleData, author: user?.result?.name }))
       navigate('/')
     } else {
-      dispatch(updateArticle(location.pathname.slice(1, 25), articleData))
+      dispatch(
+        updateArticle(location.pathname.slice(1, 25), {
+          ...articleData,
+          author: user?.result?.name
+        })
+      )
       navigate(`/${location.pathname.slice(1, 25)}`)
     }
   }
