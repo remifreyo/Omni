@@ -12,7 +12,6 @@ const Article = () => {
   const items = useSelector((state) => state.articles)
   const [user, setUser] = useState(null)
   let { id } = useParams()
-
   useEffect(() => {
     let currArticle = items.find((element) => {
       return element._id === id
@@ -32,6 +31,27 @@ const Article = () => {
           })}
         </p>
         <p>Written By: {article.author}</p>
+        <p>
+          Categories:{' '}
+          {article.categories.length > 1
+            ? article.categories.map((category) => {
+                switch (category) {
+                  case '64b7efe040d0677f80eb1d4e':
+                    return 'Music '
+                  case '64b7efe740d0677f80eb1d7e':
+                    return 'Finance '
+                  case '64b7efb540d0677f80eb1cbe':
+                    return 'Technology '
+                  case '64b7efee40d0677f80eb1dc5':
+                    return 'Marketing '
+                  case '64b7f575f4be0d3fb9bcbf84':
+                    return 'Film'
+                  default:
+                    return 'None'
+                }
+              })
+            : 'None'}
+        </p>
         <p>{article.description}</p>
       </section>
       {user !== null && article.author === user.result.name ? (

@@ -22,7 +22,7 @@ const NavBar = () => {
       </Link>
       <div>
         <NavLink to="/">Home </NavLink>
-        <NavLink to="/categories">Categories</NavLink>
+        {/* <NavLink to="/categories">Categories</NavLink> */}
         {!user ? (
           <NavLink to="/auth">Signup/Login</NavLink>
         ) : (

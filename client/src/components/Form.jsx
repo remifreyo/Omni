@@ -10,8 +10,10 @@ const Form = () => {
   const [articleData, setarticleData] = useState({
     title: '',
     description: '',
-    image: ''
+    image: '',
+    categories: []
   })
+  const [categories, setCategories] = useState([])
   const items = useSelector((state) => state.articles)
   const location = useLocation()
   const dispatch = useDispatch()
@@ -31,7 +33,20 @@ const Form = () => {
     }
   }
   const handleChange = (e) => {
-    setarticleData({ ...articleData, [e.target.id]: e.target.value })
+    if (e.target.checked === true && e.target.name === 'categories') {
+      let cat = [...categories, e.target.value]
+      setCategories([...categories, e.target.value])
+      setarticleData({ ...articleData, ['categories']: cat })
+    } else if (e.target.checked === false && e.target.name === 'categories') {
+      // let idx = categories.indexOf(e.target.value)
+      let cat = categories.filter((category) => category !== e.target.value)
+      setCategories(
+        categories.filter((category) => category !== e.target.value)
+      )
+      setarticleData({ ...articleData, ['categories']: cat })
+    } else {
+      setarticleData({ ...articleData, [e.target.id]: e.target.value })
+    }
   }
   useEffect(() => {
     if (location.pathname != '/new' && articleData.description === '') {
@@ -56,35 +71,50 @@ const Form = () => {
         <br />
         <fieldset>
           <legend>Select one or more Categories:</legend>
-          <label for="Music">Music</label>
-          <input type="checkbox" name="categories" value="Music" id="Music" />
+          <label htmlFor="Music">Music</label>
+          <input
+            type="checkbox"
+            name="categories"
+            value="Music"
+            id="categories"
+            onChange={handleChange}
+          />
           &nbsp;
-          <label for="Technology">Technology</label>
+          <label htmlFor="Technology">Technology</label>
           <input
             type="checkbox"
             name="categories"
             value="Technology"
-            id="Technology"
+            id="categories"
+            onChange={handleChange}
           />
           &nbsp;
-          <label for="Finance">Finance</label>
+          <label htmlFor="Finance">Finance</label>
           <input
             type="checkbox"
             name="categories"
             value="Finance"
-            id="Finance"
+            id="categories"
+            onChange={handleChange}
           />
           &nbsp;
-          <label for="Marketing">Marketing</label>
+          <label htmlFor="Marketing">Marketing</label>
           <input
             type="checkbox"
             name="categories"
             value="Marketing"
-            id="Marketing"
+            id="categories"
+            onChange={handleChange}
           />
           &nbsp;
-          <label for="Film">Film</label>
-          <input type="checkbox" name="categories" value="Film" id="Film" />
+          <label htmlFor="Film">Film</label>
+          <input
+            type="checkbox"
+            name="categories"
+            value="Film"
+            id="categories"
+            onChange={handleChange}
+          />
           &nbsp;
         </fieldset>
         <label htmlFor="description">Description:</label>
