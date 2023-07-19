@@ -12,13 +12,15 @@ const getArticles = async (req, res) => {
 
 const createArticle = async (req, res) => {
   const article = req.body
-  const newArticle = new Article(article)
-  try {
-    await newArticle.save()
-    res.status(201).json(newArticle)
-  } catch (error) {
-    console.log(error.message)
-  }
+  console.log(req.body)
+
+  // const newArticle = new Article(article)
+  // try {
+  //   await newArticle.save()
+  //   res.status(201).json(newArticle)
+  // } catch (error) {
+  //   console.log(error.message)
+  // }
 }
 
 const editArticle = async (req, res) => {

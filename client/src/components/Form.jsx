@@ -54,6 +54,39 @@ const Form = () => {
           onChange={handleChange}
         />
         <br />
+        <fieldset>
+          <legend>Select one or more Categories:</legend>
+          <label for="Music">Music</label>
+          <input type="checkbox" name="categories" value="Music" id="Music" />
+          &nbsp;
+          <label for="Technology">Technology</label>
+          <input
+            type="checkbox"
+            name="categories"
+            value="Technology"
+            id="Technology"
+          />
+          &nbsp;
+          <label for="Finance">Finance</label>
+          <input
+            type="checkbox"
+            name="categories"
+            value="Finance"
+            id="Finance"
+          />
+          &nbsp;
+          <label for="Marketing">Marketing</label>
+          <input
+            type="checkbox"
+            name="categories"
+            value="Marketing"
+            id="Marketing"
+          />
+          &nbsp;
+          <label for="Film">Film</label>
+          <input type="checkbox" name="categories" value="Film" id="Film" />
+          &nbsp;
+        </fieldset>
         <label htmlFor="description">Description:</label>
         <br />
         <textarea
