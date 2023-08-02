@@ -44,13 +44,17 @@ const editArticle = async (req, res) => {
     author: req.body.author,
     categories: []
   }
+
   await Promise.all(
     req.body.categories.map(async (cat) => {
       let c = await Category.find({ category: cat })
-      let objId = JSON.stringify(c[0]._id)
-      article.categories.push(objId.split(`"`)[1])
+      if (c.length !== 0) {
+        let objId = JSON.stringify(c[0]._id)
+        article.categories.push(objId.split(`"`)[1])
+      }
     })
   )
+
   if (!mongoose.Types.ObjectId.isValid(_id))
     return res.status(404).send('No post with that id')
   const updatedArticle = await Article.findByIdAndUpdate(

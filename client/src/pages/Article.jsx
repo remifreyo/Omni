@@ -33,7 +33,7 @@ const Article = () => {
         <p>Written By: {article.author}</p>
         <p>
           Categories:{' '}
-          {article.categories.length > 1
+          {article.categories.length > 0
             ? article.categories.map((category) => {
                 switch (category) {
                   case '64b7efe040d0677f80eb1d4e':

@@ -11,6 +11,7 @@ import NewArticle from './pages/NewArticle'
 import EditArticle from './pages/EditArticle'
 import Article from './pages/Article'
 import Auth from './pages/Auth'
+import Footer from './components/Footer'
 
 const App = () => {
   const location = useLocation()
@@ -23,11 +24,11 @@ const App = () => {
   }, [dispatch, currLocation])
   return (
     <div className="App">
-      <header>
+      <header className="w-full">
         <NavBar />
       </header>
       <main>
-        {/* {location.pathname != '/new' ? <Search /> : null} */}
+        {location.pathname != '/new' ? <Search /> : null}
         {location.pathname === `/${id}/edit` ? <EditArticle /> : null}
         <Routes>
           <Route path="/" element={<Home />} />
@@ -37,6 +38,7 @@ const App = () => {
           <Route path="/auth" element={<Auth />} />
         </Routes>
       </main>
+      <Footer />
     </div>
   )
 }
