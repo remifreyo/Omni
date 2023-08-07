@@ -21,10 +21,10 @@ header {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  padding-top: 12%;
+  padding-top: 9%;
   align-items: center;
   /* background-image: url(images/bckgrnd.jpeg); */
-  background-color: rgb(0, 0, 0);
+  background: #C65B7C;
   background-repeat:no-repeat;
   background-size:cover;
   
@@ -64,7 +64,6 @@ box-shadow: 0 2px black ;
 
 .carousel_item p {
   color:white;
-  /* margin-left: 7%; */
   position: relative;
   width: 60%;
   min-height: 80px;
@@ -128,55 +127,32 @@ height: fit-content;
   color: #923080;
 }
 
-.nav {
-  justify-content: space-between;
-  align-items: center;
-  color: #484F4E;
-  padding: 1em;
-  padding-bottom: 2px;
-  height: 50px;
-  font-family: 'Roboto';
-  display: flex;
-  width: 100%;
-  background-color: #380529;
-}
-
-.nav a {
-  text-decoration: none;
-  color: #a2a8bd;
-  font-weight: bold;
-  margin-left: 0.5em;
-  padding: 14px;
-}
-
-.nav a:hover {
-  font-size: 1.1em;
-}
-
 .search {
   width: 100%;
-  margin-top: 8%;
+  margin-top: 5%;
   position: absolute;
 }
 
+
 .search input {
-  height: 28px;
-  width: 55%;
-margin-left: 22.5%;
-text-align: center;
-border: solid 3px rgb(0, 0, 0);
+  height: 48px;
+  width: 50%;
+  margin-left: 25%;
+  text-align: center;
+  border: solid 1px rgb(0, 0, 0);
+  border-radius:30px;
 }
 
 
 .form {
   margin-top: 5%;;
-width: 70%;
-display: flex;
-align-content: center;
-justify-content: center;
-background-color: #484F4E;
-opacity: 85%;
-padding: 3%;
+  width: 70%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  background-color: #484F4E;
+  opacity: 85%;
+  padding: 3%;
 }
 
 .form form label, input, p{
@@ -302,6 +278,7 @@ color: black;
   flex-basis: 45%;
   margin-top:6px;
   margin-right: 5px;
+  background-color: grey;
 }
 
 .comment-section {
@@ -324,6 +301,6 @@ color: black;
 }
 
 .footer {
-  background-color: #a9a7a9;
+  background-color: #8AC6D0;
   text-align: center;
 }
