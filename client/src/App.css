@@ -21,7 +21,7 @@ header {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  padding-top: 9%;
+  padding-top: 12%;
   align-items: center;
   /* background-image: url(images/bckgrnd.jpeg); */
   background: #C65B7C;
@@ -129,7 +129,7 @@ height: fit-content;
 
 .search {
   width: 100%;
-  margin-top: 5%;
+  margin-top: 7%;
   position: absolute;
 }
 
@@ -145,7 +145,6 @@ height: fit-content;
 
 
 .form {
-  margin-top: 5%;;
   width: 70%;
   display: flex;
   align-content: center;
@@ -172,7 +171,9 @@ height: fit-content;
 }
 
 .article-card img{
-height: 150px;
+height: 200px;
+width:100%;
+object-fit: fill;
 }
 
 .article-card {

@@ -28,7 +28,7 @@ const App = () => {
         <NavBar />
       </header>
       <main>
-        {location.pathname != '/new' ? <Search /> : null}
+        {location.pathname === '/' ? <Search /> : null}
         {location.pathname === `/${id}/edit` ? <EditArticle /> : null}
         <Routes>
           <Route path="/" element={<Home />} />
