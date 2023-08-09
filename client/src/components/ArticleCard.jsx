@@ -17,7 +17,7 @@ const ArticleCard = () => {
         return (
           <Card className="mt-6 w-96 mb-12 mr-2">
             <Link to={`${item._id}`}>
-              <CardHeader color="blue-gray" className="relative h-56">
+              <CardHeader className="bg-teritiary relative h-56">
                 <img src={item.image} />
               </CardHeader>
               <CardBody>
