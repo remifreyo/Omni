@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import FileBase from 'react-file-base64'
 import { useDispatch, useSelector } from 'react-redux'
-import { createArticle, getArticles, updateArticle } from '../actions/articles'
+import { createArticle, updateArticle } from '../actions/articles'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 const Form = () => {
@@ -38,7 +38,6 @@ const Form = () => {
       setCategories([...categories, e.target.value])
       setarticleData({ ...articleData, ['categories']: cat })
     } else if (e.target.checked === false && e.target.name === 'categories') {
-      // let idx = categories.indexOf(e.target.value)
       let cat = categories.filter((category) => category !== e.target.value)
       setCategories(
         categories.filter((category) => category !== e.target.value)

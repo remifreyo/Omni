@@ -17,7 +17,6 @@ const ArticleCard = () => {
         return (
           <Card className="mt-6 w-96 mb-12 mr-2">
             <Link to={`${item._id}`}>
-              {/* <div className="idv-card"> */}
               <CardHeader color="blue-gray" className="relative h-56">
                 <img src={item.image} />
               </CardHeader>
@@ -38,9 +37,8 @@ const ArticleCard = () => {
                 </div>
               </CardBody>
               <CardFooter className="pt-0">
-                <Button>Read More</Button>
+                <Button className="bg-teritiary">Read More</Button>
               </CardFooter>
-              {/* </div> */}
             </Link>
           </Card>
         )

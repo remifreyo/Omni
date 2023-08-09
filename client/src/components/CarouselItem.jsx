@@ -7,14 +7,14 @@ const CarouselItem = ({ item }) => {
         className="carousel_item"
         style={{ backgroundImage: `url(${item.image})` }}
       >
-        <container className="carousel_info">
+        <div className="carousel_info">
           <h3>{item.title}</h3>
           <p>
             {item.description.substring(0, 125)}
             {item.description.length > 125 ? '...' : null}
           </p>
           <button>Read More</button>
-        </container>
+        </div>
       </div>
     </Link>
   )
