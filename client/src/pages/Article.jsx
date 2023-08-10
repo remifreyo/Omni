@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { deleteArticle } from '../actions/articles'
 import CommentSection from '../components/CommentSection'
+import { Button } from '@material-tailwind/react'
 
 const Article = () => {
   const navigate = useNavigate()
@@ -57,16 +58,16 @@ const Article = () => {
       {user !== null && article.author === user.result.name ? (
         <div className="article-details-btns">
           <Link to={`/${id}/edit`} replace>
-            <button>Edit</button>
+            <Button>Edit</Button>
           </Link>
-          <button
+          <Button
             onClick={() => {
               dispatch(deleteArticle(article._id))
               navigate('/')
             }}
           >
             Delete
-          </button>
+          </Button>
         </div>
       ) : null}
 

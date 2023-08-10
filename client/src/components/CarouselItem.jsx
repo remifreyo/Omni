@@ -10,8 +10,8 @@ const CarouselItem = ({ item }) => {
         <div className="carousel_info">
           <h3>{item.title}</h3>
           <p>
-            {item.description.substring(0, 125)}
-            {item.description.length > 125 ? '...' : null}
+            {item.description.substring(0, 150)}
+            {item.description.length > 150 ? '...' : null}
           </p>
           <button>Read More</button>
         </div>
