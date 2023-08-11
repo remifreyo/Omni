@@ -99,7 +99,6 @@ box-shadow: 0 2px black ;
 .carousel_item button {
 width: 40%;
 max-width: 120px;
-background-color: white;
 margin-top: 2%;
 height: fit-content;
 }

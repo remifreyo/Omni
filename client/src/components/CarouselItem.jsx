@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { Button } from '@material-tailwind/react'
 
 const CarouselItem = ({ item }) => {
   return (
@@ -13,7 +14,7 @@ const CarouselItem = ({ item }) => {
             {item.description.substring(0, 150)}
             {item.description.length > 150 ? '...' : null}
           </p>
-          <button>Read More</button>
+          <Button className="bg-primary">Read More</Button>
         </div>
       </div>
     </Link>
