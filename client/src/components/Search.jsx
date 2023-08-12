@@ -38,7 +38,11 @@ function Search() {
           onBlur={(e) => (e.target.placeholder = 'what are you looking for?')}
           onChange={handleChange}
         />
-        <Button type="submit" size="sm" className="rounded ml-2 bg-teritiary">
+        <Button
+          type="submit"
+          size="sm"
+          className="rounded ml-2 bg-teritiary hover:bg-primary"
+        >
           Submit!
         </Button>
       </form>

@@ -14,7 +14,7 @@ const CarouselItem = ({ item }) => {
             {item.description.substring(0, 150)}
             {item.description.length > 150 ? '...' : null}
           </p>
-          <Button className="bg-primary">Read More</Button>
+          <Button className="bg-primary hover:bg-teritiary">Read More</Button>
         </div>
       </div>
     </Link>

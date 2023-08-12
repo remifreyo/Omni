@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
@@ -12,7 +12,7 @@ import {
 const Categories = () => {
   const items = useSelector((state) => state.articles)
   let allCategories = []
-  const [results, setResults] = useState('')
+  const [results, setResults] = useState(items)
 
   const handleClick = (e) => {
     let category = e.target.innerText.toLowerCase()
@@ -55,8 +55,8 @@ const Categories = () => {
     }
   }
   useEffect(() => {
-    console.log(results)
-  }, [results])
+    setResults(items)
+  }, [items])
   return (
     <div className="categories">
       {items.map((item) => {

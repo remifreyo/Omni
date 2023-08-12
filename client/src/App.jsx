@@ -5,7 +5,7 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import Search from './components/Search'
 import { getArticles } from './actions/articles'
 import Categories from './pages/Categories'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import NewArticle from './pages/NewArticle'
 import EditArticle from './pages/EditArticle'
@@ -18,7 +18,6 @@ const App = () => {
   const dispatch = useDispatch()
   const currLocation = location.pathname
   const id = location.pathname.slice(1, 25)
-  const items = useSelector((state) => state.articles)
   useEffect(() => {
     dispatch(getArticles())
   }, [dispatch, currLocation])

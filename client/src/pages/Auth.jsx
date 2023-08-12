@@ -2,6 +2,13 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { signin, signup } from '../actions/auth'
 import { useNavigate } from 'react-router-dom'
+import {
+  Card,
+  Input,
+  Checkbox,
+  Button,
+  Typography
+} from '@material-tailwind/react'
 
 const Auth = () => {
   const initialState = {
@@ -30,23 +37,33 @@ const Auth = () => {
     setIsSignup(!isSignup)
   }
   return (
-    <div className="auth">
-      <div className="auth-form">
-        <p>{isSignup ? 'Sign Up' : 'Sign In'}</p>
-        <form onSubmit={handleSubmit}>
+    <Card color="transparent" shadow={false} className="mt-48 bg-white p-24">
+      <Typography variant="h4" color="blue-gray">
+        {isSignup ? 'Sign Up' : 'Sign In'}{' '}
+      </Typography>
+      <Typography color="gray" className="mt-1 font-normal">
+        {isSignup
+          ? 'Enter your information to register.'
+          : 'Enter your email and password to sign in'}{' '}
+      </Typography>
+      <form
+        className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96"
+        onSubmit={handleSubmit}
+      >
+        <div className="mb-4 flex flex-col gap-6">
           {isSignup && (
             <>
-              <input
+              <Input
                 name="firstName"
-                placeholder="First Name *"
+                placeholder="First Name"
                 label="First Name"
                 onChange={handleChange}
                 required
                 type="text"
               />
-              <input
+              <Input
                 name="lastName"
-                placeholder="Last Name *"
+                placeholder="Last Name"
                 label="Last Name"
                 onChange={handleChange}
                 required
@@ -54,41 +71,49 @@ const Auth = () => {
               />
             </>
           )}
-          <input
+          <Input
             name="email"
-            placeholder="Email Address *"
+            placeholder="Email Address"
             label="Email Address"
             onChange={handleChange}
             required
             type="email"
           />
-          <input
+          <Input
             name="password"
-            placeholder="Password *"
+            placeholder="Password"
             label="Password"
             onChange={handleChange}
             required
             type="password"
           />
           {isSignup && (
-            <input
+            <Input
               name="confirmPassword"
-              placeholder="Confirm Password *"
-              label="confirmPassword"
+              placeholder="Confirm Password"
+              label="Confirm Password"
               onChange={handleChange}
               required
               type="password"
             />
           )}
-          <button type="submit">{isSignup ? 'Sign Up' : 'Sign In'} </button>
-          <button onClick={switchMode}>
-            {isSignup
-              ? 'Already Have An Account? Sign In'
-              : "Don't Have An Account? Sign Up"}
-          </button>
-        </form>
-      </div>
-    </div>
+        </div>
+        <Button className="mt-6" fullWidth type="submit">
+          {isSignup ? 'Sign Up' : 'Sign In'}{' '}
+        </Button>
+        <Button
+          variant="outlined"
+          className="mt-6 text-center font-normal"
+          color="gray"
+          fullWidth
+          onClick={switchMode}
+        >
+          {isSignup
+            ? 'Already Have An Account? Sign In'
+            : "Don't Have An Account? Sign Up"}
+        </Button>
+      </form>
+    </Card>
   )
 }
 

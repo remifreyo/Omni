@@ -37,7 +37,9 @@ const ArticleCard = () => {
                 </div>
               </CardBody>
               <CardFooter className="pt-0">
-                <Button className="bg-teritiary">Read More</Button>
+                <Button className="bg-teritiary hover:bg-primary">
+                  Read More
+                </Button>
               </CardFooter>
             </Link>
           </Card>
