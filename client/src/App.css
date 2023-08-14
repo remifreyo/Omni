@@ -270,10 +270,10 @@ color: black;
 
 .comment-section {
   background-color: #8a8f8e;
-  width: 95%;
+  width: 100%;
+  height: 25vh;
   text-align: center;
   min-height: 200px;
-  margin-bottom: 5%;
 }
 
 .comment-section p {

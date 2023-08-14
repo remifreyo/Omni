@@ -19,7 +19,9 @@ const CommentSection = ({ article }) => {
     <div>
       <h2>Comments</h2>
       {comments?.map((comment, idx) => (
-        <p key={idx}>{comment.comment} </p>
+        <p className="text-gray-800" key={idx}>
+          {comment.comment}{' '}
+        </p>
       ))}
 
       {user ? (
@@ -28,8 +30,8 @@ const CommentSection = ({ article }) => {
           <textarea
             label="Comment"
             value={comment}
-            cols="30"
-            rows="5"
+            cols="70"
+            rows="7"
             onChange={(e) => setComment(e.target.value)}
           ></textarea>
           <br />

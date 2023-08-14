@@ -125,7 +125,7 @@ const Categories = () => {
         {results
           ? results.map((result) => {
               return (
-                <Link to={`${result._id}`} className="m-4">
+                <Link to={`/${result._id}`} className="m-4">
                   <Card className="w-full flex-row h-80">
                     <CardHeader
                       shadow={false}
