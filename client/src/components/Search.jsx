@@ -29,7 +29,7 @@ function Search() {
     setSearchTerm(e.target.value)
   }
   return (
-    <div className="search">
+    <div className="search mt-24">
       <form onSubmit={handleSubmit}>
         <input
           placeholder="what are you looking for?"

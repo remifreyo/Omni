@@ -179,7 +179,7 @@ const Categories = () => {
                           variant="text"
                           className="flex items-center gap-2"
                         >
-                          Learn More
+                          Read Post
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"

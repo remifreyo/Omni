@@ -74,7 +74,11 @@ const Article = () => {
         </div>
         <article className="h-fit">
           <div className="mx-auto rounded-t-lg bg-white p-16 text-justify shadow-lg">
-            <p className="text-gray-900">{article.description}</p>
+            <div
+              className="text-gray-900 text-lg article-text"
+              dangerouslySetInnerHTML={{ __html: article.description }}
+            />
+            <br />
             {user !== null && article.author === user.result.name ? (
               <div className="text-center">
                 <Link to={`/${id}/edit`} replace>
@@ -93,7 +97,7 @@ const Article = () => {
           </div>
         </article>
 
-        <div className="comment-section">
+        <div className="comment-section shadow-lg">
           <CommentSection article={article} />
         </div>
       </div>

@@ -3,7 +3,7 @@ import Carousel from '../components/Carousel'
 
 const Home = () => {
   return (
-    <div className="home">
+    <div className="w-full">
       <div className="carousel-container">
         <Carousel />
       </div>

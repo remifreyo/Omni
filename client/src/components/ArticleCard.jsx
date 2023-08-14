@@ -15,7 +15,7 @@ const ArticleCard = () => {
     <div className="article-card">
       {items.map((item) => {
         return (
-          <Card className="mt-6 w-96 mb-12 mr-2">
+          <Card className="mt-6 w-96 mb-12 mr-3 ml-3">
             <Link to={`${item._id}`}>
               <CardHeader className="bg-teritiary relative h-56">
                 <img src={item.image} />

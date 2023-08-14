@@ -139,7 +139,6 @@ height: fit-content;
 
 .search {
   width: 100%;
-  margin-top: 7%;
   position: relative;
 }
 
@@ -155,13 +154,11 @@ height: fit-content;
 
 
 .form {
-  width: 70%;
-  display: flex;
+  width: 90%;
+  
   align-content: center;
   justify-content: center;
-  background-color: #484F4E;
-  opacity: 85%;
-  padding: 3%;
+  padding-top: 3%;
 }
 
 .form form label, input, p{
@@ -172,12 +169,7 @@ height: fit-content;
 }
 
 .form form label, p{
-  color: white;
-}
-
-.form h1 {
-  color: white;
-  margin-right: 30px;
+  color: gray;
 }
 
 .article-card img{
@@ -269,20 +261,69 @@ color: black;
 }
 
 .comment-section {
-  background-color: #8a8f8e;
+  background-color: white;
   width: 100%;
-  height: 25vh;
   text-align: center;
   min-height: 200px;
-}
-
-.comment-section p {
-  background-color: white;
-  margin: 2px;
-  margin-bottom: 10px;
-  
+  box-shadow: 0 0 8px 8px gray;
+  padding: 8px;
+  padding-bottom: 24px;
 }
 
 .form  fieldset{
   display: flex;
+}
+
+.editor .ql-container {
+  height:400px;
+}
+
+.ql-video {
+  width:50%;
+  height: 400px;
+}
+
+.article-text h1, .form h1 {
+font-size: 3em !important;
+line-height: normal !important;
+}
+
+.article-text h2, .form h2 {
+  font-size: 2.5em !important;
+line-height: normal !important;
+}
+
+.article-text h3, .form h3 {
+  font-size: 2em !important;
+line-height: normal !important;
+}
+
+.article-text h4, .form h4 {
+  font-size: 1.5em !important;
+  line-height: normal !important;
+}
+
+.article-text h5, .form h5 {
+  font-size: 1em !important;
+  line-height: normal !important;
+}
+
+.article-text h6, .form h6 {
+  font-size: .75em !important;
+  line-height: normal !important;
+}
+
+.article-text p, .form p {
+  font-size: 1em !important;
+  font-weight:100 !important;
+}
+
+.article-text a {
+  color: rgb(45, 133, 197) !important;
+  text-decoration: underline !important;
+}
+
+.article-text strong {
+  font-weight:900 !important;
+  color: rgb(34, 34, 34) !important;
 }
