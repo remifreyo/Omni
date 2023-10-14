@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 import { Button } from '@material-tailwind/react'
 
-const CarouselItem = ({ item }) => {
+const CarouselItem = ({ item, removeHTMLTags }) => {
   return (
-    <Link to={`${item._id}`}>
+    <Link to={`${item._id}`} key={item._id}>
       <div
         className="carousel_item"
         style={{ backgroundImage: `url(${item.image})` }}
@@ -11,7 +11,7 @@ const CarouselItem = ({ item }) => {
         <div className="carousel_info">
           <h3>{item.title}</h3>
           <p>
-            {item.description.substring(0, 150)}
+            {removeHTMLTags(item.description.substring(0, 150))}
             {item.description.length > 150 ? '...' : null}
           </p>
           <Button className="bg-primary hover:bg-teritiary">Read More</Button>

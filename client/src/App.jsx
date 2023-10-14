@@ -18,6 +18,9 @@ const App = () => {
   const dispatch = useDispatch()
   const currLocation = location.pathname
   const id = location.pathname.slice(1, 25)
+  const removeHTMLTags = (text) => {
+    return text.replace(/<[^>]*>/g, ' ')
+  }
   useEffect(() => {
     dispatch(getArticles())
   }, [dispatch, currLocation])
@@ -30,8 +33,11 @@ const App = () => {
         {location.pathname === '/' ? <Search /> : null}
         {location.pathname === `/${id}/edit` ? <EditArticle /> : null}
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/categories" element={<Categories />} />
+          <Route path="/" element={<Home removeHTMLTags={removeHTMLTags} />} />
+          <Route
+            path="/categories"
+            element={<Categories removeHTMLTags={removeHTMLTags} />}
+          />
           <Route path="/new" element={<NewArticle />} />
           <Route path="/:id" element={<Article />} />
           <Route path="/auth" element={<Auth />} />

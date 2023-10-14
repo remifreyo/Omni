@@ -22,15 +22,13 @@ const CommentSection = ({ article }) => {
       <div className="space-y-4">
         <div>
           {comments?.map((comment, idx) => (
-            <div className="flex-shrink-0 mr-3 flex justify-center">
+            <div className="flex-shrink-0 mr-3 flex justify-center" key={idx}>
               <img
-                class="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10"
+                className="mr-2 rounded-full w-8 h-8 sm:w-10 sm:h-10"
                 src="https://images.unsplash.com/photo-1604426633861-11b2faead63c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=200&q=80"
                 alt=""
               />
-              <p className="text-gray-800 w-1/4" key={idx}>
-                {comment.comment}{' '}
-              </p>
+              <p className="text-gray-800 w-96">{comment.comment} </p>
             </div>
           ))}
 
@@ -44,7 +42,7 @@ const CommentSection = ({ article }) => {
                 cols="70"
                 rows="7"
                 onChange={(e) => setComment(e.target.value)}
-                className="border-solid border-2 border-gray-300 m-4"
+                className="border-solid border-2 border-gray-300 m-4 w-4/5"
               ></textarea>
               <br />
               <Button disabled={!comment} onClick={handleClick}>

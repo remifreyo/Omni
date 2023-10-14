@@ -10,7 +10,6 @@
   }
 }
 
-
 header {
   position: fixed;
   width:98%;
@@ -21,7 +20,7 @@ header {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  padding-top: 8%;
+  padding-top: 64px;
   align-items: center;
   /* background-image: url(images/bckgrnd.jpeg); */
   background: #e9e9e9;
@@ -326,4 +325,115 @@ line-height: normal !important;
 .article-text strong {
   font-weight:900 !important;
   color: rgb(34, 34, 34) !important;
+}
+
+.hide-on-mobile {
+  display: none;
+}
+
+.categories {
+  width: 100%;
+}
+
+.new, .edit .form {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+@media screen and (max-width: 1200px) {
+  .carousel_info { 
+    width:70%
+  }
+  .carousel_info h3 {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .carousel_info { 
+    width:100%
+  }
+  .carousel_info h3 {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .carousel_info p {
+    display: none;
+  }
+  .carousel_info h3 {
+    margin-top: 30%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .search form{
+    display: grid;
+  }
+  .search form input{
+    font-size: 0.8rem;
+    margin-right: 25%;
+}
+  .search form button {
+    display: flex;
+    align-self: center;
+    justify-self: center;
+  }
+}
+@media screen and (max-width: 500px) {
+  .cardText {
+ font-size: 1.5rem;
+}
+}
+
+@media screen and (max-width: 1360px) {
+  .categoryText {
+ font-size: .9rem;
+}
+.categoryTitle {
+  font-size: 1.25rem;
+}
+}
+
+@media screen and (max-width: 1150px) {
+  .categoryText {
+ font-size: .8rem;
+}
+.categoryTitle {
+  font-size: 1.1rem;
+}
+}
+
+@media screen and (max-width: 960px) {
+  .categoryText {
+ font-size: 1rem;
+}
+.categoryTitle {
+  font-size: 1.5rem;
+}
+}
+
+@media screen and (max-width: 655px) {
+  .categoryText {
+ font-size: .9rem;
+}
+.categoryTitle {
+  font-size: 1rem;
+}
+}
+
+@media screen and (max-width: 480px) {
+  .categoryText {
+ font-size: .7rem;
+}
+.categoryTitle {
+  font-size: .9rem;
+}
+}
+
+@media screen and (max-width: 719px) {
+  .authButton {
+    display: none;
+  }
 }

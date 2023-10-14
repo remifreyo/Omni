@@ -9,7 +9,7 @@ import {
   Button
 } from '@material-tailwind/react'
 
-const Categories = () => {
+const Categories = ({ removeHTMLTags }) => {
   const items = useSelector((state) => state.articles)
   let allCategories = []
   const [results, setResults] = useState(items)
@@ -54,6 +54,7 @@ const Categories = () => {
         break
     }
   }
+
   useEffect(() => {
     setResults(items)
   }, [items])
@@ -85,47 +86,22 @@ const Categories = () => {
           }
         })
       })}
-      <div>
-        {allCategories.map((category) => {
-          switch (category) {
-            case 'Music':
-              return (
-                <Button className="m-4" onClick={handleClick}>
-                  Music
-                </Button>
-              )
-            case 'Marketing':
-              return (
-                <Button className="m-4" onClick={handleClick}>
-                  Marketing
-                </Button>
-              )
-            case 'Finance':
-              return (
-                <Button className="m-4" onClick={handleClick}>
-                  Finance
-                </Button>
-              )
-            case 'Film':
-              return (
-                <Button className="m-4" onClick={handleClick}>
-                  Film
-                </Button>
-              )
-            case 'Technology':
-              return (
-                <Button className="m-4" onClick={handleClick}>
-                  Technology
-                </Button>
-              )
-          }
-        })}
+      <div className="justify-center flex w-screen flex-wrap mt-2">
+        {allCategories.map((category, idx) => (
+          <Button className="m-4" onClick={handleClick} key={category}>
+            {category}
+          </Button>
+        ))}
       </div>
-      <div className="grid grid-cols-2 w-full">
+      <div className="grid lg:grid-cols-2 w-full">
         {results
           ? results.map((result) => {
               return (
-                <Link to={`/${result._id}`} className="m-4">
+                <Link
+                  to={`/${result._id}`}
+                  className="m-4"
+                  key={result._id || idx}
+                >
                   <Card className="w-full flex-row h-80">
                     <CardHeader
                       shadow={false}
@@ -166,18 +142,21 @@ const Categories = () => {
                       <Typography
                         variant="h4"
                         color="blue-gray"
-                        className="mb-2"
+                        className="mb-2 categoryTitle"
                       >
                         {result.title}
                       </Typography>
-                      <Typography color="gray" className="mb-8 font-normal">
-                        {result.description.substring(0, 160)}
+                      <Typography
+                        color="gray"
+                        className="mb-4 font-normal categoryText"
+                      >
+                        {removeHTMLTags(result.description.substring(0, 160))}
                         {result.description.length > 160 ? '...' : null}
                       </Typography>
                       <a href="#" className="inline-block">
                         <Button
                           variant="text"
-                          className="flex items-center gap-2"
+                          className="flex items-center gap-2 pt-0"
                         >
                           Read Post
                           <svg

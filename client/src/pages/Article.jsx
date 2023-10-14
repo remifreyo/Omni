@@ -23,8 +23,8 @@ const Article = () => {
   }, [items, id])
   return article ? (
     <div className="w-full flex">
-      <div className="w-full h-full text-justify bg-gray-700" te>
-        <div className="z-0 bg-whitea relative mx-auto mt-10 overflow-hidden rounded-t-lg py-32 text-center shadow-lg">
+      <div className="w-full h-full text-justify bg-gray-700">
+        <div className="z-0 bg-white relative mx-auto mt-10 overflow-hidden rounded-t-lg py-32 text-center shadow-lg">
           <p className="text-white">
             Published{' '}
             {new Date(article.createdAt).toLocaleString('en-us', {
@@ -42,7 +42,7 @@ const Article = () => {
             {article.categories.length > 0
               ? article.categories.map((category) => {
                   return (
-                    <Link to={`/categories`}>
+                    <Link key={category} to={`/categories`}>
                       <button className="rounded-lg bg-gray-50 px-2 py-1 font-medium text-gray-900 hover:bg-gray-200">
                         {(() => {
                           switch (category) {
@@ -98,7 +98,10 @@ const Article = () => {
         </article>
 
         <div className="comment-section shadow-lg">
-          <CommentSection article={article} />
+          <CommentSection
+            key={`comment-section-${article?._id}`}
+            article={article}
+          />
         </div>
       </div>
     </div>
