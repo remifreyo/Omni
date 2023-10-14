@@ -46,7 +46,7 @@ function Search() {
           Submit!
         </Button>
       </form>
-      <div className="grid grid-cols-2">
+      <div className="grid grid-cols-2 searchResult">
         {!searchResults
           ? null
           : searchResults.map((result) => {
@@ -92,11 +92,14 @@ function Search() {
                       <Typography
                         variant="h4"
                         color="blue-gray"
-                        className="mb-2"
+                        className="mb-2 resultTitle"
                       >
                         {result.title}
                       </Typography>
-                      <Typography color="gray" className="mb-8 font-normal">
+                      <Typography
+                        color="gray"
+                        className="mb-8 font-normal resultText"
+                      >
                         {result.description.substring(0, 160)}
                         {result.description.length > 160 ? '...' : null}
                       </Typography>

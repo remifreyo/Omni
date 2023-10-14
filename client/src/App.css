@@ -437,3 +437,27 @@ line-height: normal !important;
     display: none;
   }
 }
+
+@media screen and (max-width: 1350px) {
+  .searchResult {
+    grid-template-columns: repeat(1, minmax(0, 1fr))
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .resultTitle {
+   font-size: 1.1rem;
+  }
+  .resultText {
+   font-size: .9rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .resultTitle {
+   font-size: .8rem;
+  }
+  .resultText {
+   font-size: .7rem;
+  }
+}
