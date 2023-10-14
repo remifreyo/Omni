@@ -138,7 +138,7 @@ const Form = () => {
                     id="categories"
                     checked={categories.includes(category)}
                     onChange={handleCheckboxChange}
-                    className="mr-2"
+                    className="mr-2 accent-primary formCheckbox"
                   />
                   <label htmlFor={category}>{category}</label>
                 </div>

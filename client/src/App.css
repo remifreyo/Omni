@@ -340,6 +340,11 @@ line-height: normal !important;
   margin-bottom: 24px;
 }
 
+.formCheckbox {
+  appearance: auto;
+  -webkit-appearance: checkbox;
+}
+
 @media screen and (max-width: 1200px) {
   .carousel_info { 
     width:70%
