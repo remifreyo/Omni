@@ -51,7 +51,7 @@ function Search() {
           ? null
           : searchResults.map((result) => {
               return (
-                <Link to={`${result._id}`} className="m-4">
+                <Link key={result._id} to={`${result._id}`} className="m-4">
                   <Card className="w-full flex-row h-80">
                     <CardHeader
                       shadow={false}
@@ -103,7 +103,7 @@ function Search() {
                         {result.description.substring(0, 160)}
                         {result.description.length > 160 ? '...' : null}
                       </Typography>
-                      <a href="#" className="inline-block">
+                      <p className="inline-block">
                         <Button
                           variant="text"
                           className="flex items-center gap-2"
@@ -124,7 +124,7 @@ function Search() {
                             />
                           </svg>
                         </Button>
-                      </a>
+                      </p>
                     </CardBody>
                   </Card>
                 </Link>

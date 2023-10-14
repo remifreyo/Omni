@@ -1,9 +1,19 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import ReactQuill from 'react-quill'
+import FileInputButton from './FileInputButton'
 import 'react-quill/dist/quill.snow.css'
-import { Button, Input } from '@material-tailwind/react'
+import {
+  Button,
+  Input,
+  Checkbox,
+  Card,
+  List,
+  ListItem,
+  ListItemPrefix,
+  Typography
+} from '@material-tailwind/react'
 import FileBase from 'react-file-base64'
 import { createArticle, updateArticle } from '../actions/articles'
 
@@ -39,11 +49,20 @@ const formats = [
   'video'
 ]
 
+const categoryMapping = {
+  '64b7efe040d0677f80eb1d4e': 'Music',
+  '64b7efe740d0677f80eb1d7e': 'Finance',
+  '64b7efb540d0677f80eb1cbe': 'Technology',
+  '64b7efee40d0677f80eb1dc5': 'Marketing',
+  '64b7f575f4be0d3fb9bcbf84': 'Film'
+}
+
 const Form = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const dispatch = useDispatch()
   const user = JSON.parse(localStorage.getItem('profile'))
+  const hiddenFileInput = useRef(null)
 
   const initialArticleData = {
     title: '',
@@ -53,8 +72,8 @@ const Form = () => {
   }
 
   const [articleData, setArticleData] = useState(initialArticleData)
-  const [categories, setCategories] = useState([])
   const articles = useSelector((state) => state.articles)
+  const [categories, setCategories] = useState([]) // Maintaining categories state
 
   useEffect(() => {
     if (location.pathname !== '/new' && articleData.description === '') {
@@ -62,20 +81,32 @@ const Form = () => {
         (article) => article._id === location.pathname.slice(1, 25)
       )
       if (currentArticle) {
-        setArticleData(currentArticle)
-        setCategories(currentArticle.categories)
+        const categoryNames = currentArticle.categories.map(
+          (categoryId) => categoryMapping[categoryId]
+        )
+        setCategories(categoryNames || [])
+
+        // Update articleData with the title and image
+        articleData.title = currentArticle.title // Prepopulate title
+        articleData.image = currentArticle.image // Prepopulate image
+        articleData.categories = categoryNames
+        setArticleData({ ...articleData })
       }
     }
-  }, [articleData, articles])
+  }, [articles, location.pathname])
+
+  const handleFileSelected = (selectedFile) => {
+    // Handle the selected file, e.g., set it in the state
+    setArticleData({ ...articleData, image: selectedFile })
+  }
 
   const handleCheckboxChange = (e) => {
     const { name, value, checked } = e.target
     if (name === 'categories') {
       const updatedCategories = checked
-        ? [...categories, value]
+        ? [...categories, value] // Use category IDs here
         : categories.filter((category) => category !== value)
       setCategories(updatedCategories)
-      setArticleData({ ...articleData, categories: updatedCategories })
     }
   }
 
@@ -106,66 +137,110 @@ const Form = () => {
     }
   }
 
+  const handleClick = () => {
+    hiddenFileInput.current.click()
+  }
+
   return (
     <div className="form bg-gray-100 p-12 shadow-xl">
       <h2 className="text-gray-800 text-center">
         {location.pathname !== '/new' ? 'Edit Article' : 'Create Article'}
       </h2>
       <br />
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="flex flex-col items-center">
         <Input
           id="title"
           type="text"
           placeholder="Title"
           onFocus={(e) => (e.target.placeholder = '')}
           onBlur={(e) => (e.target.placeholder = 'Title')}
-          value={articleData.title}
+          value={articleData.title} // Prepopulate title
           onChange={handleInputChange}
         />
         <br />
         <fieldset>
-          <legend className="mb-8 text-gray-700">
+          <legend className="mb-4 text-gray-700 text-center">
             Select one or more Categories:
           </legend>
-          <div className="flex flex-wrap">
-            {['Music', 'Technology', 'Finance', 'Marketing', 'Film'].map(
-              (category) => (
-                <div key={category} className="flex items-center mr-4">
-                  <input
-                    type="checkbox"
-                    name="categories"
-                    value={category}
-                    id="categories"
-                    checked={categories.includes(category)}
-                    onChange={handleCheckboxChange}
-                    className="mr-2 accent-primary formCheckbox"
-                  />
-                  <label htmlFor={category}>{category}</label>
-                </div>
-              )
-            )}
-          </div>
+          <Card className="bg-gray-100">
+            <List className="flex-row">
+              {['Music', 'Technology', 'Finance', 'Marketing', 'Film'].map(
+                (categoryName) => (
+                  <ListItem key={categoryName} className="p-0">
+                    <label
+                      htmlFor={`horizontal-list-${categoryName.toLowerCase()}`}
+                      className="flex w-full cursor-pointer items-center px-3 py-2"
+                    >
+                      <ListItemPrefix className="mr-3">
+                        <Checkbox
+                          id={`horizontal-list-${categoryName.toLowerCase()}`}
+                          ripple={false}
+                          className="hover:before:opacity-0"
+                          containerProps={{
+                            className: 'p-0'
+                          }}
+                          checked={categories.includes(categoryName)}
+                          onChange={handleCheckboxChange}
+                          name="categories"
+                          value={categoryName}
+                        />
+                      </ListItemPrefix>
+                      <Typography
+                        color="blue-gray"
+                        className="mr-8 categoryName"
+                      >
+                        {categoryName}
+                      </Typography>
+                    </label>
+                  </ListItem>
+                )
+              )}
+            </List>
+          </Card>
         </fieldset>
         <br />
         <ReactQuill
           id="description"
           onChange={handleDescriptionChange}
           value={articleData.description}
-          className="editor"
+          className="editor mb-0 w-full"
           modules={modules}
           formats={formats}
         />
-        <br />
-        <p>Choose An Image:</p>
-        <FileBase
-          multiple={false}
-          type="file"
-          onDone={({ base64 }) =>
-            setArticleData({ ...articleData, image: base64 })
-          }
-        />
-        <div className="text-center">
-          <Button className="w-2/5 sm:w-1/3" type="submit">
+        <div className="w-1/2 flex flex-1 flex-wrap justify-center m-4">
+          <p className="text-center mb-4">Choose An Image:</p>
+          <div
+            style={{
+              display: 'inline-block',
+              backgroundColor: '#5B3758',
+              color: 'white',
+              cursor: 'pointer',
+              borderRadius: '4px',
+              boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+              flex: '0 0 40%',
+              margin: '0 auto', // Center the button horizontally
+              textAlign: 'center',
+              opacity: '85%',
+              padding: '8px' // Adjust padding to control button size
+            }}
+            onClick={handleClick}
+          >
+            Select Image
+          </div>
+          <input
+            type="file"
+            onChange={handleFileSelected}
+            ref={hiddenFileInput}
+            style={{ display: 'none', flex: '0 0 100%' }}
+          />
+          <img
+            src={articleData.image}
+            alt="No File Selected"
+            className="w-full mt-4 mb-8 text-center"
+          />
+        </div>
+        <div className="text-center w-80">
+          <Button className="w-4/5" type="submit">
             Submit!
           </Button>
         </div>

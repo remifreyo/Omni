@@ -164,7 +164,7 @@ height: fit-content;
   width: 100%;
   font-size: 1.2em;
   color: rgb(0, 0, 0);
-  margin-bottom: 15px;
+  /* margin-bottom: 15px; */
 }
 
 .form form label, p{
@@ -312,7 +312,7 @@ line-height: normal !important;
   line-height: normal !important;
 }
 
-.article-text p, .form p {
+.article-text p {
   font-size: 1em !important;
   font-weight:100 !important;
 }
@@ -341,11 +341,12 @@ line-height: normal !important;
 }
 
 .formCheckbox {
-  appearance: checkbox;
+  appearance: none;
   -webkit-appearance: checkbox;
   -moz-appearance: checkbox;
   -o-appearance: none;
 }
+
 
 @media screen and (max-width: 1200px) {
   .carousel_info { 
@@ -467,4 +468,21 @@ line-height: normal !important;
   .resultText {
    font-size: .7rem;
   }
+}
+
+@media (max-width: 900px) {
+  .categoryName {
+    font-size: .7rem; /* Adjust the font size as needed */
+  }
+}
+
+@media (max-width: 780px) {
+    .flex-row {
+      flex-direction: column; /* Change to column layout on smaller screens */
+    }
+  
+    .flex-row > .p-0 {
+      margin: 4px 0; /* Add vertical spacing between categories */
+    }/* Adjust the font size as needed */
+  
 }

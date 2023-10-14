@@ -81,7 +81,12 @@ const Article = () => {
             <br />
             {user !== null && article.author === user.result.name ? (
               <div className="text-center">
-                <Link to={`/${id}/edit`} replace>
+                <Link
+                  to={{
+                    pathname: `/${id}/edit`,
+                    state: { categories: article.categories }
+                  }}
+                >
                   <Button className="mr-4">Edit</Button>
                 </Link>
                 <Button
