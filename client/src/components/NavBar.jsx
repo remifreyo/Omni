@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 
 const NavBar = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')))
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(true)
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const location = useLocation()
@@ -108,7 +108,7 @@ const NavBar = () => {
                     setIsMobileMenuOpen(false)
                     toggleMobileMenu()
                   }}
-                  className="block py-2 pl-3 pr-4"
+                  className="block py-2 pl-3 pr-4  hover:text-primary"
                 >
                   Home
                 </NavLink>
@@ -120,7 +120,7 @@ const NavBar = () => {
                     setIsMobileMenuOpen(false)
                     toggleMobileMenu()
                   }}
-                  className="block py-2 pl-3 pr-4"
+                  className="block py-2 pl-3 pr-4 hover:text-primary"
                 >
                   Categories
                 </NavLink>
@@ -133,7 +133,7 @@ const NavBar = () => {
                       setIsMobileMenuOpen(false)
                       toggleMobileMenu()
                     }}
-                    className="block py-2 pl-3 pr-4"
+                    className="block py-2 pl-3 pr-4 hover:text-primary"
                   >
                     New Article
                   </NavLink>
@@ -164,7 +164,7 @@ const NavBar = () => {
                     setIsMobileMenuOpen(false)
                     toggleMobileMenu()
                   }}
-                  className="text-white bg-primary hover.bg-teritiary focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-primary"
+                  className="text-white bg-primary hover.bg-teritiary focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-primary  hover:bg-teritiary"
                 >
                   Logout
                 </button>
