@@ -341,9 +341,10 @@ line-height: normal !important;
 }
 
 .formCheckbox {
-  appearance: auto;
+  appearance: checkbox;
   -webkit-appearance: checkbox;
   -moz-appearance: checkbox;
+  -o-appearance: none;
 }
 
 @media screen and (max-width: 1200px) {
