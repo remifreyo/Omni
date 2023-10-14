@@ -90,14 +90,21 @@ const Form = () => {
         articleData.title = currentArticle.title // Prepopulate title
         articleData.image = currentArticle.image // Prepopulate image
         articleData.categories = categoryNames
+        articleData.description = currentArticle.description
         setArticleData({ ...articleData })
       }
     }
   }, [articles, location.pathname])
 
-  const handleFileSelected = (selectedFile) => {
-    // Handle the selected file, e.g., set it in the state
-    setArticleData({ ...articleData, image: selectedFile })
+  const handleFileSelected = (file) => {
+    if (file) {
+      const reader = new FileReader()
+      reader.onload = (e) => {
+        const dataURL = e.target.result
+        setArticleData({ ...articleData, image: dataURL })
+      }
+      reader.readAsDataURL(file)
+    }
   }
 
   const handleCheckboxChange = (e) => {
@@ -229,7 +236,7 @@ const Form = () => {
           </div>
           <input
             type="file"
-            onChange={handleFileSelected}
+            onChange={(e) => handleFileSelected(e.target.files[0])}
             ref={hiddenFileInput}
             style={{ display: 'none', flex: '0 0 100%' }}
           />
