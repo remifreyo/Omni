@@ -30,6 +30,7 @@ const CommentSection = ({ article }) => {
   }
 
   useEffect(() => {
+    console.log(currArticle)
     setComments(currArticle.comments)
   }, [currArticle])
   return (
@@ -47,7 +48,6 @@ const CommentSection = ({ article }) => {
               <p className="text-gray-800 w-96">
                 {comment?.comment ? comment.comment : 'Loading...'}
               </p>
-              
             </div>
           ))}
 
