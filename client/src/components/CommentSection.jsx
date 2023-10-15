@@ -47,6 +47,7 @@ const CommentSection = ({ article }) => {
               <p className="text-gray-800 w-96">
                 {comment?.comment ? comment.comment : 'Loading...'}
               </p>
+              
             </div>
           ))}
 

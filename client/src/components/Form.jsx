@@ -72,6 +72,7 @@ const Form = () => {
   const [articleData, setArticleData] = useState(initialArticleData)
   const articles = useSelector((state) => state.articles)
   const [categories, setCategories] = useState([]) // Maintaining categories state
+  const [formErrors, setFormErrors] = useState('')
 
   useEffect(() => {
     if (location.pathname !== '/new' && articleData.description === '') {
@@ -93,7 +94,46 @@ const Form = () => {
     }
   }, [articles, location.pathname])
 
+  const validateForm = () => {
+    let isValid = true
+    const errors = {
+      title: '',
+      description: '',
+      category: '',
+      image: ''
+    }
+
+    if (articleData.title.length > 65) {
+      isValid = false
+      errors.title = 'Title must be 65 characters or less'
+    }
+    if (!articleData.title.trim()) {
+      isValid = false
+      errors.title = 'Title is required'
+    }
+    if (!articleData.description.trim()) {
+      isValid = false
+      errors.description = 'Description is required'
+    }
+    if (articleData.categories.length < 1) {
+      isValid = false
+      errors.category = 'Category is required'
+    }
+    if (!articleData.image.trim()) {
+      isValid = false
+      errors.image = 'Image is required'
+    }
+
+    setFormErrors(errors)
+
+    return isValid
+  }
+
   const handleFileSelected = (file) => {
+    setFormErrors((prevErrors) => ({
+      ...prevErrors,
+      image: ''
+    }))
     if (file) {
       const reader = new FileReader()
       reader.onload = (e) => {
@@ -105,6 +145,10 @@ const Form = () => {
   }
 
   const handleCheckboxChange = (e) => {
+    setFormErrors((prevErrors) => ({
+      ...prevErrors,
+      category: ''
+    }))
     const { name, value, checked } = e.target
     if (name === 'categories') {
       const updatedCategories = checked
@@ -116,29 +160,38 @@ const Form = () => {
   }
 
   const handleInputChange = (e) => {
+    setFormErrors((prevErrors) => ({
+      ...prevErrors,
+      [id]: ''
+    }))
     const { id, value } = e.target
     setArticleData({ ...articleData, [id]: value })
   }
 
   const handleDescriptionChange = (newValue) => {
+    setFormErrors((prevErrors) => ({
+      ...prevErrors,
+      description: ''
+    }))
     setArticleData({ ...articleData, description: newValue })
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
     const authorName = user?.result?.name
-
-    if (location.pathname === '/new') {
-      dispatch(createArticle({ ...articleData, author: authorName }))
-      navigate('/')
-    } else {
-      dispatch(
-        updateArticle(location.pathname.slice(1, 25), {
-          ...articleData,
-          author: authorName
-        })
-      )
-      navigate(`/${location.pathname.slice(1, 25)}`)
+    if (validateForm()) {
+      if (location.pathname === '/new') {
+        dispatch(createArticle({ ...articleData, author: authorName }))
+        navigate('/')
+      } else {
+        dispatch(
+          updateArticle(location.pathname.slice(1, 25), {
+            ...articleData,
+            author: authorName
+          })
+        )
+        navigate(`/${location.pathname.slice(1, 25)}`)
+      }
     }
   }
 
@@ -162,6 +215,9 @@ const Form = () => {
           value={articleData.title} // Prepopulate title
           onChange={handleInputChange}
         />
+        {formErrors.title && (
+          <div className="text-red-600">{formErrors.title}</div>
+        )}
         <br />
         <fieldset>
           <legend className="mb-4 text-gray-700 text-center">
@@ -203,6 +259,9 @@ const Form = () => {
             </List>
           </Card>
         </fieldset>
+        {formErrors.category && (
+          <div className="text-red-600">{formErrors.category}</div>
+        )}
         <br />
         <ReactQuill
           id="description"
@@ -212,6 +271,9 @@ const Form = () => {
           modules={modules}
           formats={formats}
         />
+        {formErrors.description && (
+          <div className="text-red-600">{formErrors.description}</div>
+        )}
         <div className="w-1/2 flex flex-1 flex-wrap justify-center m-4">
           <p className="text-center mb-4">Choose An Image:</p>
           <div
@@ -243,6 +305,9 @@ const Form = () => {
             alt="No File Selected"
             className="w-full mt-4 mb-8 text-center"
           />
+          {formErrors.image && (
+            <div className="text-red-600">{formErrors.image}</div>
+          )}
         </div>
         <div className="text-center w-80">
           <Button className="w-4/5" type="submit">
