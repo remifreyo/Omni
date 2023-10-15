@@ -3,7 +3,8 @@ import {
   DELETE,
   UPDATE,
   CREATE,
-  COMMENT
+  COMMENT,
+  FETCH_ARTICLE
 } from '../constants/actionTypes'
 
 export default (articles = [], action) => {
@@ -19,14 +20,17 @@ export default (articles = [], action) => {
     case CREATE:
       return [...articles, action.payload]
     case COMMENT:
+      return articles.map((article) => {
+        if (article._id === action.payload._id) {
+          return action.payload
+        }
+        return article
+      })
+    case FETCH_ARTICLE:
       return {
         ...state,
-        articles: state.articles.map((article) => {
-          if (article._id === action.payload._id) {
-            return action.payload
-          }
-          return article
-        })
+        article: action.payload.article,
+        comments: action.payload.comments
       }
     default:
       return articles

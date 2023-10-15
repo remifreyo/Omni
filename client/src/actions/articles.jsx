@@ -48,8 +48,12 @@ export const deleteArticle = (id) => async (dispatch) => {
 export const commentArticle = (value, id) => async (dispatch) => {
   try {
     const { data } = await api.comment(value, id)
-    dispatch({ type: COMMENT, payload: data })
+
+    // The server should return an updated list of comments
+    if (data.comments) {
+      dispatch({ type: COMMENT, payload: data.comments })
+    }
   } catch (error) {
-    console.log(error)
+    console.error(error)
   }
 }

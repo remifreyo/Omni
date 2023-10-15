@@ -10,17 +10,21 @@ const Article = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const [article, setArticle] = useState(null)
-  const items = useSelector((state) => state.articles)
+  const articles = useSelector((state) => state.articles)
   const [user, setUser] = useState(null)
   let { id } = useParams()
   useEffect(() => {
-    let currArticle = items.find((element) => {
-      return element._id === id
-    })
-    setArticle(currArticle)
-
+    if (articles) {
+      const currArticle = articles.find((element) => element._id === id)
+      setArticle(currArticle)
+    }
     setUser(JSON.parse(localStorage.getItem('profile')))
-  }, [items, id])
+  }, [articles, id])
+
+  if (!articles) {
+    // Handle the case where articles are not available yet
+    return <div>Loading...</div>
+  }
   return article ? (
     <div className="w-full flex">
       <div className="w-full h-full text-justify bg-gray-700">

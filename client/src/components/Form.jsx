@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import ReactQuill from 'react-quill'
-import FileInputButton from './FileInputButton'
 import 'react-quill/dist/quill.snow.css'
 import {
   Button,
@@ -14,7 +13,6 @@ import {
   ListItemPrefix,
   Typography
 } from '@material-tailwind/react'
-import FileBase from 'react-file-base64'
 import { createArticle, updateArticle } from '../actions/articles'
 
 const modules = {
@@ -85,7 +83,6 @@ const Form = () => {
           (categoryId) => categoryMapping[categoryId]
         )
         setCategories(categoryNames || [])
-
         // Update articleData with the title and image
         articleData.title = currentArticle.title // Prepopulate title
         articleData.image = currentArticle.image // Prepopulate image
@@ -114,6 +111,7 @@ const Form = () => {
         ? [...categories, value] // Use category IDs here
         : categories.filter((category) => category !== value)
       setCategories(updatedCategories)
+      setArticleData({ ...articleData, categories: updatedCategories })
     }
   }
 

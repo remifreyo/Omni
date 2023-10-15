@@ -2,20 +2,36 @@ import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { commentArticle } from '../actions/articles'
 import { Button } from '@material-tailwind/react'
+import { fetchArticleById } from '../articlesSlice'
 
 const CommentSection = ({ article }) => {
+  const [currArticle, setCurrArticle] = useState(article)
   const [comments, setComments] = useState(article?.comments)
   const [comment, setComment] = useState('')
   const user = JSON.parse(localStorage.getItem('profile'))
   const dispatch = useDispatch()
-  useEffect(() => {}, [])
+  const updateArticle = async (id) => {
+    try {
+      const updatedArticle = await dispatch(fetchArticleById(id))
+      if (updatedArticle.payload) {
+        setCurrArticle(updatedArticle.payload)
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   const handleClick = async () => {
     const finalComment = `${user.result.name}: ${comment}`
-
-    let newComment = await dispatch(commentArticle(finalComment, article._id))
-    setComments(newComment)
+    const newComment = await dispatch(commentArticle(finalComment, article._id))
+    setComments((prevComments) => [...prevComments, newComment])
     setComment('')
+    updateArticle(article._id)
   }
+
+  useEffect(() => {
+    setComments(currArticle.comments)
+  }, [currArticle])
   return (
     <div>
       <h3 className="mb- text-lg font-semibold text-gray-900 mb-8">Comments</h3>
@@ -28,7 +44,9 @@ const CommentSection = ({ article }) => {
                 src="https://images.unsplash.com/photo-1604426633861-11b2faead63c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=200&q=80"
                 alt=""
               />
-              <p className="text-gray-800 w-96">{comment.comment} </p>
+              <p className="text-gray-800 w-96">
+                {comment?.comment ? comment.comment : 'Loading...'}
+              </p>
             </div>
           ))}
 
